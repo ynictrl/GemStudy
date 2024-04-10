@@ -9,8 +9,10 @@ public class GemButton : MonoBehaviour
     public string title;
     public string hardness;
     public string density;
-
+    public string classification;
     public TMPro.TextMeshProUGUI tmp;
+
+    public TMPro.TextMeshProUGUI description;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,20 @@ public class GemButton : MonoBehaviour
     {
         //GameObject.GetComponent<TextMeshPro>().
         tmp.text = title;
+
+        switch (control.filter)
+        {
+            case 0:
+                description.text = "";
+            break;
+            case 1:
+                description.text = hardness;
+            break;
+            case 2:
+                description.text = density;
+            break;
+            
+        }
     }
 
     public void EnterAbout()
@@ -30,6 +46,7 @@ public class GemButton : MonoBehaviour
         control.infos[0].text = title;
         control.infos[1].text = hardness;
         control.infos[2].text = density;
+        control.infos[3].text = classification;
 
         control.canvas[0].SetActive(false);
         control.canvas[1].SetActive(true);

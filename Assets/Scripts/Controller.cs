@@ -8,48 +8,48 @@ public class Controller : MonoBehaviour
     public GameObject[] gemButtons;
     public GameObject[] canvas;
 
-    // [nome, dureza, densidade, diafaneridade, brilho, mineral-minerio, classificação]
-    public string[,] mineralList = new string[40,3]
-                                    {{"Anfibólio", "5.50", "3.10"}, 
-                                    {"Apatita", "5.00", "3.18"}, //mohs
-                                    {"Barita", "3.25", "4.50"}, 
-                                    {"Bauxita", "2.25", "2.25"}, 
-                                    {"Berilo", "7.25", "2.65"}, 
-                                    {"Biotita", "2.75", "3.00"}, 
-                                    {"Calcita", "3.00", "2.85"}, //mohs
-                                    {"Calcopirita", "3.75", "4.00"}, 
-                                    {"Cassiterita", "6.50", "7.00"}, 
-                                    {"Caulinita", "1.50", "2.60"}, 
-                                    {"Cianita", "6.50", "3.60"}, 
-                                    {"Clorita", "2.25", "3.00"}, 
-                                    {"Coríndon", "9.00", "4.00"}, //mohs
-                                    {"Diamante", "10.00", "5.00"}, //mohs
-                                    {"Dolomita", "3.75", "3.00"}, 
-                                    {"Epidoto", "6.50", "3.40"}, 
-                                    {"Esfalerita", "3.75", "4.00"}, 
-                                    {"Esmectita", "1.50", "2.60"}, 
-                                    {"Espodumênio", "6.50", "3.50"}, 
-                                    {"Fluorita", "4.00", "3.40"}, //mohs
-                                    {"Galena", "2.50", "8.90"}, 
-                                    {"Gipsita", "2.00", "2.30"}, //mohs
-                                    {"Granada", "7.00", "3.80"},
-                                    {"Hematita", "6.00", "5.20"}, 
-                                    {"Illita", "1.50", "2.60"}, 
-                                    {"Ilmenita", "5.50", "4.50"},
-                                    {"K-feldspato", "6.00", "2.57"}, //mohs
-                                    {"Magnetita", "6.00", "5.17"}, 
-                                    {"Molibdenita", "1.25", "4.70"},
-                                    {"Muscovita", "3.25", "2.80"}, 
-                                    {"Olivina", "6.75", "3.00"},
-                                    {"Ouro", "2.75", "19.32"},
-                                    {"Pirita", "6.25", "5.02"},
-                                    {"Piroxênio", "6.50", "3.20"}, 
-                                    {"Plagioclásio", "6.25", "2.62"},
-                                    {"Quartzo", "7.00", "2.65"}, //mohs
-                                    {"Romanechita", "5.50", "6.56"},
-                                    {"Talco", "1.00", "2.75",}, //mohs
-                                    {"Topázio", "8.00", "3.50"}, //mohs
-                                    {"Turmalina", "7.25", "3.10"}};
+    // [nome, dureza, densidade, classificação, diafaneridade, brilho, mineral-minerio, classificação]
+    public string[,] mineralList = new string[40,4]
+                                    {{"Anfibólio", "5.50", "3.10", "Inossilicatos(c. dupla)"}, 
+                                    {"Apatita", "5.00", "3.18", "Fosfato"}, //mohs
+                                    {"Barita", "3.25", "4.50", "Sulfato"}, 
+                                    {"Bauxita", "2.25", "2.25", "Hidróxido"}, 
+                                    {"Berilo", "7.25", "2.65", "Ciclossilicatos"}, 
+                                    {"Biotita", "2.75", "3.00", "Filossilicatos"}, 
+                                    {"Calcita", "3.00", "2.85", "Carbonato"}, //mohs
+                                    {"Calcopirita", "3.75", "4.00", "Sufeto"}, 
+                                    {"Cassiterita", "6.50", "7.00", "Óxido"}, 
+                                    {"Caulinita", "1.50", "2.60", "Filossilicatos"}, 
+                                    {"Cianita", "6.50", "3.60", "Nesossilicatos"}, 
+                                    {"Clorita", "2.25", "3.00", "Filossilicatos"}, 
+                                    {"Coríndon", "9.00", "4.00", "Óxido"}, //mohs
+                                    {"Diamante", "10.00", "5.00", "Elementos Nativos"}, //mohs
+                                    {"Dolomita", "3.75", "3.00", "Carbonato"}, 
+                                    {"Epidoto", "6.50", "3.40", "Sorossilicatos"}, 
+                                    {"Esfalerita", "3.75", "4.00", "Sulfeto"}, 
+                                    {"Esmectita", "1.50", "2.60", "Filossilicatos"}, 
+                                    {"Espodumênio", "6.50", "3.50", "Inossilicatos(c. simples)"}, 
+                                    {"Fluorita", "4.00", "3.40", "Haleto"}, //mohs
+                                    {"Galena", "2.50", "8.90", "Sulfeto"}, 
+                                    {"Gipsita", "2.00", "2.30", "Sulfato"}, //mohs
+                                    {"Granada", "7.00", "3.80", "Nesossilicatos"},
+                                    {"Hematita", "6.00", "5.20", "Óxido"}, 
+                                    {"Illita", "1.50", "2.60", "Filossilicatos"}, 
+                                    {"Ilmenita", "5.50", "4.50", "Óxido"},
+                                    {"K-feldspato", "6.00", "2.57", "Tectossilicatos"}, //mohs
+                                    {"Magnetita", "6.00", "5.17", "Óxido"}, 
+                                    {"Molibdenita", "1.25", "4.70", "Sulfeto"},
+                                    {"Muscovita", "3.25", "2.80", "Filossilicatos"}, 
+                                    {"Olivina", "6.75", "3.00", "Nesossilicatos"},
+                                    {"Ouro", "2.75", "19.32", "Elementos Nativos"},
+                                    {"Pirita", "6.25", "5.02", "Sulfeto"},
+                                    {"Piroxênio", "6.50", "3.20", "Inossilicatos(c. simples)"}, 
+                                    {"Plagioclásio", "6.25", "2.62", "Tectossilicatos"},
+                                    {"Quartzo", "7.00", "2.65", "Tectossilicatos"}, //mohs
+                                    {"Romanechita", "5.50", "6.56", "Óxido"},
+                                    {"Talco", "1.00", "2.75", "Filossilicatos"}, //mohs
+                                    {"Topázio", "8.00", "3.50", "Nesossilicatos"}, //mohs
+                                    {"Turmalina", "7.25", "3.10", "Ciclossilicatos"}};
 
     public string[] hardnessList = {"Talco", "Molibdenita", "Caulinita", "Esmectita", 
                                     "Illita", "Gipsita", "Bauxita", "Clorita", 
@@ -65,11 +65,11 @@ public class Controller : MonoBehaviour
     public string[] densityList = {"Bauxita", "Gipsita", "K-feldspato", "Caulinita", 
                                     "Esmectita", "Illita", "Plagioclásio", "Berilo", 
                                     "Quartzo", "Talco", "Muscovita", "Calcita", 
-                                    "Biotica", "Clorita", "Dolomita", "Olivina", 
+                                    "Biotita", "Clorita", "Dolomita", "Olivina", 
                                     "Anfibólio", "Turmalina", "Apatita", "Piroxênio", 
                                     "Epidoto", "Fluorita","Espodumênio", "Topázio", 
                                     "Cianita", "Granada","Calcopirita", "Coríndon", 
-                                    "Esfarelita", "Barita","Ilmenita", "Molibdenita", 
+                                    "Esfalerita", "Barita","Ilmenita", "Molibdenita", 
                                     "Diamante", "Pirita","Magnetita", "Hematita", 
                                     "Romanechita", "Cassiterita", "Galena", "Ouro"};
 
@@ -151,6 +151,7 @@ public class Controller : MonoBehaviour
                 gemButtons[i].GetComponent<GemButton>().title = mineralList[i,0];
                 gemButtons[i].GetComponent<GemButton>().hardness = mineralList[i,1];
                 gemButtons[i].GetComponent<GemButton>().density = mineralList[i,2];
+                gemButtons[i].GetComponent<GemButton>().classification = mineralList[i,3];
             }
         }else{
             int j = 0;
@@ -159,6 +160,7 @@ public class Controller : MonoBehaviour
                 gemButtons[i].GetComponent<GemButton>().title = mineralList[j,0];
                 gemButtons[i].GetComponent<GemButton>().hardness = mineralList[j,1];
                 gemButtons[i].GetComponent<GemButton>().density = mineralList[j,2];
+                gemButtons[i].GetComponent<GemButton>().classification = mineralList[i,3];
                 j++;
             }
         }
@@ -170,13 +172,15 @@ public class Controller : MonoBehaviour
         {
             for(int i=0; i<40; i++)
             {
-                gemButtons[i].GetComponent<GemButton>().title = hardnessList[i];
+                gemButtons[i].GetComponent<GemButton>().title = hardnessList[i];// botao recebe talco
       
                 for(int m = 0; m < 40; m++)
                 {//lista dos min
-                    if(hardnessList[i] == mineralList[m, 0])
+                    if(hardnessList[i] == mineralList[m, 0])// se talco igual index
                     {
                         gemButtons[i].GetComponent<GemButton>().hardness = mineralList[m,1];
+                        gemButtons[i].GetComponent<GemButton>().density = mineralList[m,2];
+                        gemButtons[i].GetComponent<GemButton>().classification = mineralList[m,3];
                     }
                 }
             }
@@ -190,7 +194,9 @@ public class Controller : MonoBehaviour
                 {//lista dos min
                     if(hardnessList[i] == mineralList[m, 0])
                     {
-                        gemButtons[j].GetComponent<GemButton>().hardness = mineralList[m,1];
+                        gemButtons[i].GetComponent<GemButton>().hardness = mineralList[m,1];
+                        gemButtons[i].GetComponent<GemButton>().density = mineralList[m,2];
+                        gemButtons[i].GetComponent<GemButton>().classification = mineralList[m,3];
                     }
                 }
 
@@ -213,7 +219,9 @@ public class Controller : MonoBehaviour
                 {//lista dos min
                     if(densityList[i] == mineralList[m, 0])
                     {
+                        gemButtons[i].GetComponent<GemButton>().hardness = mineralList[m,1];
                         gemButtons[i].GetComponent<GemButton>().density = mineralList[m,2];
+                        gemButtons[i].GetComponent<GemButton>().classification = mineralList[m,3];
                     }
                 }
             }
@@ -227,7 +235,9 @@ public class Controller : MonoBehaviour
                 {//lista dos min
                     if(densityList[i] == mineralList[m, 0])
                     {
-                        gemButtons[j].GetComponent<GemButton>().density = mineralList[m,2];
+                        gemButtons[i].GetComponent<GemButton>().hardness = mineralList[m,1];
+                        gemButtons[i].GetComponent<GemButton>().density = mineralList[m,2];
+                        gemButtons[i].GetComponent<GemButton>().classification = mineralList[m,3];
                     }
                 }
                 j++;
