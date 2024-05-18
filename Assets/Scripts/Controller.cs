@@ -8,48 +8,48 @@ public class Controller : MonoBehaviour
     public GameObject[] gemButtons;
     public GameObject[] canvas;
 
-    // [nome, dureza, densidade, classificação, diafaneridade, brilho, mineral-minerio, classificação]
+    // [nome, dureza, densidade, classificação, formula, sistema cristalino, diafaneidade, traço, clivagem,  outros(mineral-minerio)]
     public string[,] mineralList = new string[40,4]
-                                    {{"Anfibólio", "5.50", "3.10", "Inossilicatos(c. dupla)"}, 
-                                    {"Apatita", "5.00", "3.18", "Fosfato"}, //mohs
-                                    {"Barita", "3.25", "4.50", "Sulfato"}, 
-                                    {"Bauxita", "2.25", "2.25", "Hidróxido"}, 
-                                    {"Berilo", "7.25", "2.65", "Ciclossilicatos"}, 
-                                    {"Biotita", "2.75", "3.00", "Filossilicatos"}, 
-                                    {"Calcita", "3.00", "2.85", "Carbonato"}, //mohs
-                                    {"Calcopirita", "3.75", "4.00", "Sufeto"}, 
-                                    {"Cassiterita", "6.50", "7.00", "Óxido"}, 
-                                    {"Caulinita", "1.50", "2.60", "Filossilicatos"}, 
-                                    {"Cianita", "6.50", "3.60", "Nesossilicatos"}, 
-                                    {"Clorita", "2.25", "3.00", "Filossilicatos"}, 
-                                    {"Coríndon", "9.00", "4.00", "Óxido"}, //mohs
-                                    {"Diamante", "10.00", "5.00", "Elementos Nativos"}, //mohs
-                                    {"Dolomita", "3.75", "3.00", "Carbonato"}, 
-                                    {"Epidoto", "6.50", "3.40", "Sorossilicatos"}, 
-                                    {"Esfalerita", "3.75", "4.00", "Sulfeto"}, 
-                                    {"Esmectita", "1.50", "2.60", "Filossilicatos"}, 
-                                    {"Espodumênio", "6.50", "3.50", "Inossilicatos(c. simples)"}, 
-                                    {"Fluorita", "4.00", "3.40", "Haleto"}, //mohs
-                                    {"Galena", "2.50", "8.90", "Sulfeto"}, 
-                                    {"Gipsita", "2.00", "2.30", "Sulfato"}, //mohs
-                                    {"Granada", "7.00", "3.80", "Nesossilicatos"},
-                                    {"Hematita", "6.00", "5.20", "Óxido"}, 
-                                    {"Illita", "1.50", "2.60", "Filossilicatos"}, 
-                                    {"Ilmenita", "5.50", "4.50", "Óxido"},
-                                    {"K-feldspato", "6.00", "2.57", "Tectossilicatos"}, //mohs
-                                    {"Magnetita", "6.00", "5.17", "Óxido"}, 
-                                    {"Molibdenita", "1.25", "4.70", "Sulfeto"},
-                                    {"Muscovita", "3.25", "2.80", "Filossilicatos"}, 
-                                    {"Olivina", "6.75", "3.00", "Nesossilicatos"},
-                                    {"Ouro", "2.75", "19.32", "Elementos Nativos"},
-                                    {"Pirita", "6.25", "5.02", "Sulfeto"},
-                                    {"Piroxênio", "6.50", "3.20", "Inossilicatos(c. simples)"}, 
-                                    {"Plagioclásio", "6.25", "2.62", "Tectossilicatos"},
-                                    {"Quartzo", "7.00", "2.65", "Tectossilicatos"}, //mohs
-                                    {"Romanechita", "5.50", "6.56", "Óxido"},
-                                    {"Talco", "1.00", "2.75", "Filossilicatos"}, //mohs
-                                    {"Topázio", "8.00", "3.50", "Nesossilicatos"}, //mohs
-                                    {"Turmalina", "7.25", "3.10", "Ciclossilicatos"}};
+                                    {{"Anfibólio", "5-6", "3.10", "Inossilicatos(c. dupla)"}, 
+                                    {"Apatita", "5", "3.18", "Fosfato"}, //mohs
+                                    {"Barita", "3-3.5", "4.50", "Sulfato"}, 
+                                    {"Bauxita", "1-3.5", "2.25", "Hidróxido"}, 
+                                    {"Berilo", "7.5-8", "2.65", "Ciclossilicatos"}, 
+                                    {"Biotita", "2.5-3", "3.00", "Filossilicatos"}, 
+                                    {"Calcita", "3", "2.85", "Carbonato"}, //mohs
+                                    {"Calcopirita", "3.5-4", "4.00", "Sufeto"}, 
+                                    {"Cassiterita", "6-7", "7.00", "Óxido"}, 
+                                    {"Caulinita", "1-2", "2.60", "Filossilicatos"}, 
+                                    {"Cianita", "4.5-7", "3.60", "Nesossilicatos"}, 
+                                    {"Clorita", "2-2.5", "3.00", "Filossilicatos"}, 
+                                    {"Coríndon", "9", "4.00", "Óxido"}, //mohs
+                                    {"Diamante", "10", "5.00", "Elementos Nativos"}, //mohs
+                                    {"Dolomita", "3.5-4", "3.00", "Carbonato"}, 
+                                    {"Epidoto", "6-7", "3.40", "Sorossilicatos"}, 
+                                    {"Esfalerita", "3.5-4", "4.00", "Sulfeto"}, 
+                                    {"Esmectita", "1-2", "2.60", "Filossilicatos"}, 
+                                    {"Espodumênio", "6-7", "3.50", "Inossilicatos(c. simples)"}, 
+                                    {"Fluorita", "4", "3.40", "Haleto"}, //mohs
+                                    {"Galena", "2-3", "8.90", "Sulfeto"}, 
+                                    {"Gipsita", "2", "2.30", "Sulfato"}, //mohs
+                                    {"Granada", "6.5-7.5", "3.80", "Nesossilicatos"},
+                                    {"Hematita", "5.5-6.5", "5.20", "Óxido"}, 
+                                    {"Illita", "1-2", "2.60", "Filossilicatos"}, 
+                                    {"Ilmenita", "5-6", "4.50", "Óxido"},
+                                    {"K-feldspato", "6", "2.57", "Tectossilicatos"}, //mohs
+                                    {"Magnetita", "5.5-6.5", "5.17", "Óxido"}, 
+                                    {"Molibdenita", "1-1.5", "4.70", "Sulfeto"},
+                                    {"Muscovita", "2.5-4", "2.80", "Filossilicatos"}, 
+                                    {"Olivina", "6.5-7", "3.00", "Nesossilicatos"},
+                                    {"Ouro", "2.5-3", "19.32", "Elementos Nativos"},
+                                    {"Pirita", "6-6.5", "5.02", "Sulfeto"},
+                                    {"Piroxênio", "5-6", "3.20", "Inossilicatos(c. simples)"}, 
+                                    {"Plagioclásio", "6-6.5", "2.62", "Tectossilicatos"},
+                                    {"Quartzo", "7", "2.65", "Tectossilicatos"}, //mohs
+                                    {"Romanechita", "5-5.5", "6.56", "Óxido"},
+                                    {"Talco", "1", "2.75", "Filossilicatos"}, //mohs
+                                    {"Topázio", "8", "3.50", "Nesossilicatos"}, //mohs
+                                    {"Turmalina", "7-7.5", "3.10", "Ciclossilicatos"}};
 
     public string[] hardnessList = {"Talco", "Molibdenita", "Caulinita", "Esmectita", 
                                     "Illita", "Gipsita", "Bauxita", "Clorita", 
