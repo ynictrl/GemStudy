@@ -10,6 +10,12 @@ public class GemButton : MonoBehaviour
     public string hardness;
     public string density;
     public string classification;
+    public string formula;
+    public string system;
+    public string diaphaneity;
+    public string cleavage;
+    public string trace;
+    public string shine;
     public TMPro.TextMeshProUGUI tmp;
 
     public TMPro.TextMeshProUGUI description;
@@ -47,6 +53,12 @@ public class GemButton : MonoBehaviour
         control.infos[1].text = hardness;
         control.infos[2].text = density;
         control.infos[3].text = classification;
+        control.infos[4].text = formula;
+        control.infos[5].text = system;
+        control.infos[6].text = diaphaneity;
+        control.infos[7].text = cleavage;
+        control.infos[8].text = trace;
+        control.infos[9].text = shine;
 
         control.canvas[0].SetActive(false);
         control.canvas[1].SetActive(true);
