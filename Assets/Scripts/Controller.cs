@@ -14,25 +14,25 @@ public class Controller : MonoBehaviour
                                     {"Apatita", "5", "3.18", "Fosfato", "", "", "", "", "", ""}, //mohs
                                     {"Barita", "3-3.5", "4.50", "Sulfato", "", "", "", "", "", ""}, 
                                     {"Bauxita", "1-3.5", "2.25", "Hidróxido", "", "", "", "", "", ""}, 
-                                    {"Berilo", "7.5-8", "2.65", "Ciclossilicatos", "", "", "", "", "", ""}, 
+                                    {"Berilo", "7.5-8", "2.65", "Ciclossilicatos", "", "Hexagonal", "Translúcido", "Imperfeita[1]", "Incolor", "Não-metálico"}, 
                                     {"Biotita", "2.5-3", "3.00", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Calcita", "3", "2.85", "Carbonato", "", "", "", "", "", ""}, //mohs
                                     {"Calcopirita", "3.5-4", "4.00", "Sufeto", "", "", "", "", "", ""}, 
                                     {"Cassiterita", "6-7", "7.00", "Óxido", "", "", "", "", "", ""}, 
                                     {"Caulinita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Cianita", "4.5-7", "3.60", "Nesossilicatos", "", "Ortorrômbico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico"}, 
+                                    {"Cianita", "4.5-7", "3.60", "Nesossilicatos", "Al2SiO5", "Ortorrômbico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico"}, 
                                     {"Clorita", "2-2.5", "3.00", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Coríndon", "9", "4.00", "Óxido", "", "", "", "", "", ""}, //mohs
                                     {"Diamante", "10", "5.00", "Elementos Nativos", "", "", "", "", "", ""}, //mohs
                                     {"Dolomita", "3.5-4", "3.00", "Carbonato", "", "", "", "", "", ""}, 
-                                    {"Epidoto", "6-7", "3.40", "Sorossilicatos", "", "", "", "", "", ""}, 
+                                    {"Epidoto", "6-7", "3.40", "Sorossilicatos", "", "Monoclínico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico"}, 
                                     {"Esfalerita", "3.5-4", "4.00", "Sulfeto", "", "", "", "", "", ""}, 
                                     {"Esmectita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Espodumênio", "6-7", "3.50", "Inossilicatos(c. simples)", "", "", "", "", "", ""}, 
+                                    {"Espodumênio", "6-7", "3.50", "Inossilicatos(c. simples)", "", "", "", "Perfeita[2]", "Incolor", "Não-metálico"}, 
                                     {"Fluorita", "4", "3.40", "Haleto", "", "", "", "", "", ""}, //mohs
                                     {"Galena", "2-3", "8.90", "Sulfeto", "", "", "", "", "", ""}, 
                                     {"Gipsita", "2", "2.30", "Sulfato", "", "", "", "", "", ""}, //mohs
-                                    {"Granada", "6.5-7.5", "3.80", "Nesossilicatos", "", "", "", "", "", ""},
+                                    {"Granada", "6.5-7.5", "3.80", "Nesossilicatos", "", "Isométrico", "Translúcido", "Sem clivagem", "Incolor", "Não-metálico"},
                                     {"Hematita", "5.5-6.5", "5.20", "Óxido", "", "", "", "", "", ""}, 
                                     {"Illita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Ilmenita", "5-6", "4.50", "Óxido", "", "", "", "", "", ""},
@@ -40,16 +40,16 @@ public class Controller : MonoBehaviour
                                     {"Magnetita", "5.5-6.5", "5.17", "Óxido", "", "", "", "", "", ""}, 
                                     {"Molibdenita", "1-1.5", "4.70", "Sulfeto", "", "", "", "", "", ""},
                                     {"Muscovita", "2.5-4", "2.80", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Olivina", "6.5-7", "3.00", "Nesossilicatos", "", "", "", "", "", ""},
+                                    {"Olivina", "6.5-7", "3.00", "Nesossilicatos", "", "Ortorrômbico", "Translúcido", "Imperfeita[2]", "Incolor", "Não-metálico"},
                                     {"Ouro", "2.5-3", "19.32", "Elementos Nativos", "", "", "", "", "", ""},
                                     {"Pirita", "6-6.5", "5.02", "Sulfeto", "", "", "", "", "", ""},
-                                    {"Piroxênio", "5-6", "3.20", "Inossilicatos(c. simples)", "", "", "", "", "", ""}, 
+                                    {"Piroxênio", "5-6", "3.20", "Inossilicatos(c. simples)", "", "Ortorrômbico/Monoclínico", "Transparente/Translúcido", "Perfeita[2]", "Varíavel", "Não-metálico"}, 
                                     {"Plagioclásio", "6-6.5", "2.62", "Tectossilicatos", "", "", "", "", "", ""},
                                     {"Quartzo", "7", "2.65", "Tectossilicatos", "", "", "", "", "", ""}, //mohs
                                     {"Romanechita", "5-5.5", "6.56", "Óxido", "", "", "", "", "", ""},
                                     {"Talco", "1", "2.75", "Filossilicatos", "", "", "", "", "", ""}, //mohs
-                                    {"Topázio", "8", "3.50", "Nesossilicatos", "", "", "", "", "", ""}, //mohs
-                                    {"Turmalina", "7-7.5", "3.10", "Ciclossilicatos", "", "", "", "", "", ""}};
+                                    {"Topázio", "8", "3.50", "Nesossilicatos", "", "Ortorrômbico", "Translúcido", "Perfeita[1]", "Incolor", "Não-metálico"}, //mohs
+                                    {"Turmalina", "7-7.5", "3.10", "Ciclossilicatos", "", "Hexagonal", "Translúcido", "Sem clivagem", "Incolor", "Não-metálico"}};
 
     public string[] hardnessList = {"Talco", "Molibdenita", "Caulinita", "Esmectita", 
                                     "Illita", "Gipsita", "Bauxita", "Clorita", 
@@ -73,11 +73,26 @@ public class Controller : MonoBehaviour
                                     "Diamante", "Pirita","Magnetita", "Hematita", 
                                     "Romanechita", "Cassiterita", "Galena", "Ouro"};
 
+    //slicatos na ordem de grupo
+    public string[] silicateList = {"Granada", "Olivina", "Cianita", "Topázio", 
+                                    "Epidoto", "Turmalina", "Berilo", "Piroxênio", 
+                                    "Anfibólio", "Espodumênio", "Caulinita", "Esmectita", 
+                                    "Illita", "Muscovita", "Biotita", "Talco",
+                                    "Clorita", "K-feldspato", "Plagioclásio", "Quartzo"};
+
+    public string[] notSilicateList = {"Esfalerita", "Galena", "Pirita", "Calcopirita", 
+                                       "Molibdenita", "Barita", "Gipsita", "Apatita", 
+                                       "Diamante", "Ouro", "Hematita", "Ilmenita", 
+                                       "Cassiterita", "Romanechita", "Magnetita", "Coríndon",
+                                       "Bauxita", "Calcita", "Dolomita", "Fluorita"};
+  
     public TMPro.TextMeshProUGUI[] infos; //textos nas infos
 
     // public bool growingOrder; // ordem crescente
     public int filter; // 0: alfabetica, 1: dureza
-    public int filterClass; // 0: todos, 1: óxidos
+    public int filterClass; // 0: todos 1: silicatos 2: Não silicatos
+    public int filterGroupSilicate; // 0: todos 1: neso 2: soro 3: ciclo 4: ino 5: filo 6: tecto 7: óxidos
+    public int filterGroupNotSilicate; // 0: todos 1: sulfetos 2: sulfatos 3: fosfatos 4: óxidos 5: sulfatos 6: óxidos 4: hidróxidos 5: carbonatos 6: haletos
 
     // public string[] tirleList = {"Anfibólio", "Apatita", "Barita", "Bauxita", 
     //                                 "Berilo", "Biotita", "Calcita", "Calcopirita",
@@ -121,16 +136,16 @@ public class Controller : MonoBehaviour
             
         }
         
-        switch (filterClass)
-        {
-            case 0:
-                //AllOrder();
-            break;
-            case 1:
-                //ÓxidoOrder();
-            break;
+        // switch (filterClass)
+        // {
+        //     case 0:
+        //         //todos
+        //     break;
+        //     case 1:
+        //         //ÓxidoOrder();
+        //     break;
             
-        }
+        // }
     }
 
     public void SetButton()
@@ -170,10 +185,69 @@ public class Controller : MonoBehaviour
 
     public void AlphabeticalOrder()// Ordenar nome
     {
-        for(int i=0; i<40; i++)
+        switch (filterClass)
         {
-            gemButtons[i].GetComponent<GemButton>().title = mineralList[i,0];
+            case 0: //todos
+                for(int i=0; i<40; i++)
+                {
+                    gemButtons[i].SetActive(true);
+                    gemButtons[i].GetComponent<GemButton>().title = mineralList[i,0];
+                }
+            break;
+            case 1: //silicatos
+                // int a = 0;
+                // int b = 0;
+
+                // while(a<40)//button
+                // {
+                //     if(a<20)
+                //     {
+                //         while(b<40)//MINERALLIST
+                //         {
+                //             if(mineralList[b,0] == silicateList[a])
+                //             {
+                //                 gemButtons[a].SetActive(true);
+                //                 gemButtons[a].GetComponent<GemButton>().title = mineralList[b,0];
+                //                 a++;
+                //             }
+                //             b++;
+                //         }
+                //     }else{
+                //         gemButtons[a].SetActive(false);
+                //     }
+                // }
+
+
+                // int i = 0;
+                // while(i<40)//button
+                // {
+                //     if(i < 20/*mineralList.length*/)// vai até os 20
+                //     {
+                //         gemButtons[i].SetActive(true);
+
+                //         for(int j=0; j<40; j++)//minerallist
+                //         {
+                //             for(int k=0; k<20; k++)// silicatellist
+                //             {
+                //                 if(silicateList[k] == mineralList[j,0])
+                //                 {
+                //                     gemButtons[i].GetComponent<GemButton>().title = silicateList[k];
+                //                     i++;
+                //                 }
+                                    
+                //             }
+                //         }
+                //     }else{
+                //         gemButtons[i].SetActive(false);
+                //     }
+                // }
+            break;
+            case 2: //não silicatos
+                
+            break;
+            
         }
+        
         SetButton();
     }
 
