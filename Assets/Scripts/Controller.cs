@@ -162,39 +162,47 @@ public class Controller : MonoBehaviour
         filter = i;
     }
 
-    public void LimitFilterClass(int j, string[] names) // limete do filtro, nome do boto
+    public void LimitFilterClass(int j) // limete do filtro, nome do boto
     {
-        if(filterClass >= j)
+        
+
+        if(filterClass < j)
         {
-            filterClass = 0;
+            filterClass++;
+            
         }else{
-                filterClass++;
+            filterClass = 0; 
         }
-        nameFilter[0].text = names[filterClass];
+
+        // nameFilter[0].text = names[filterClass];
     }
 
-    public void LimitFilterGroupSilicate(int k, string[] names) // limete do filtro, nome do boto
+    public void LimitFilterGroupSilicate(int k) // limete do filtro, nome do boto
     {
 
-        if(filterGroupSilicate >= k)
+        if(filterGroupSilicate < k)
         {
-            filterGroupSilicate = 0;
-        }else{
             filterGroupSilicate++;
+            
+        }else{
+            filterGroupSilicate = 0; 
         }
-        nameFilter[1].text = names[filterGroupSilicate];
+
+        
     }
 
-    public void LimitFilterGroupNotSilicate(int l, string[] names) // limete do filtro, nome do boto
+    public void LimitFilterGroupNotSilicate(int l) // limete do filtro, nome do boto
     {
-
-        if(filterGroupSilicate >= l)
+        // nameFilter[2].text = names[filterGroupNotSilicate];
+     
+        if(filterGroupNotSilicate < l)
         {
-            filterGroupNotSilicate = 0;
-        }else{
             filterGroupNotSilicate++;
+            
+        }else{
+            filterGroupNotSilicate = 0; 
         }
-        nameFilter[2].text = names[filterGroupNotSilicate];
+        
     }
 
     public void ChangeFilterClass(int m) // filtrar a classe/grupo
@@ -204,17 +212,20 @@ public class Controller : MonoBehaviour
         {  
             case 0:
                 string[] classes = {"Todos", "Silicatos", "Não Silicatos"};
-                LimitFilterClass(classes.Length, classes);
+                LimitFilterClass(classes.Length-1);
+                nameFilter[0].text = classes[filterClass];
             break;
             case 1:
 
                 string[] groupSillicate = {"Todos", "Neso", "Soro", "Ciclo", "Ino", "Filo", "Tecto"};
-                LimitFilterGroupSilicate(groupSillicate.Length, groupSillicate);
+                LimitFilterGroupSilicate(groupSillicate.Length-1);
+                nameFilter[1].text = groupSillicate[filterGroupSilicate];
             break;
             case 2:
 
             string[] groupNotSillicate = {"Todos", "Sulfetos", "Sulfatos", "Fosfatos", "E. Nativos", "Óxidos", "Hidróxidos", "Carbonatos", "Haletos"};
-                LimitFilterGroupNotSilicate(groupNotSillicate.Length, groupNotSillicate);
+                LimitFilterGroupNotSilicate(groupNotSillicate.Length-1);
+                nameFilter[2].text = groupNotSillicate[filterGroupNotSilicate];
             break;
         }
     }
