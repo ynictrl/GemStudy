@@ -72,39 +72,16 @@ public class Controller : MonoBehaviour
                                     "Esfalerita", "Barita","Ilmenita", "Molibdenita", 
                                     "Diamante", "Pirita","Magnetita", "Hematita", 
                                     "Romanechita", "Cassiterita", "Galena", "Ouro"};
-
-    //slicatos na ordem de grupo
-    // public string[] silicateList = {"Granada", "Olivina", "Cianita", "Topázio", 
-    //                                 "Epidoto", "Turmalina", "Berilo", "Piroxênio", 
-    //                                 "Anfibólio", "Espodumênio", "Caulinita", "Esmectita", 
-    //                                 "Illita", "Muscovita", "Biotita", "Talco",
-    //                                 "Clorita", "K-feldspato", "Plagioclásio", "Quartzo"};
-
-    // public string[] notSilicateList = {"Esfalerita", "Galena", "Pirita", "Calcopirita", 
-    //                                    "Molibdenita", "Barita", "Gipsita", "Apatita", 
-    //                                    "Diamante", "Ouro", "Hematita", "Ilmenita", 
-    //                                    "Cassiterita", "Romanechita", "Magnetita", "Coríndon",
-    //                                    "Bauxita", "Calcita", "Dolomita", "Fluorita"};
   
+    public GameObject[] infoButtons; // depois transforma em lista
     public TMPro.TextMeshProUGUI[] infos; //textos nas 
     public TMPro.TextMeshProUGUI[] nameFilter; //nome dos butao de filtro
 
     // public bool growingOrder; // ordem crescente
     public int filter; // 0: alfabetica, 1: dureza
     public int filterClass; // 0: todos 1: silicatos 2: Não silicatos
-    public int filterGroupSilicate; // 0: todos 1: neso 2: soro 3: ciclo 4: ino 5: filo 6: tecto 7: óxidos
+    public int filterGroupSilicate; // 0: todos 1: neso 2: soro 3: ciclo 4: ino 5: filo 6: tecto 
     public int filterGroupNotSilicate; // 0: todos 1: sulfetos 2: sulfatos 3: fosfatos 4: óxidos 5: sulfatos 6: óxidos 4: hidróxidos 5: carbonatos 6: haletos
-
-    // public string[] tirleList = {"Anfibólio", "Apatita", "Barita", "Bauxita", 
-    //                                 "Berilo", "Biotita", "Calcita", "Calcopirita",
-    //                                 "Cassiterita", "Caulinita", "Cianita", "Clorita", 
-    //                                 "Coríndon", "Diamante", "Dolomita", "Epidoto", 
-    //                                 "Esfalerita", "Esmectita", "Espodumênio", "Fluorita", 
-    //                                 "Galena", "Gipsita", "Granada", "Hematita",
-    //                                 "Illita", "Ilmenita", "K-feldspato", "Magnetita",
-    //                                 "Molibdenita", "Muscovita", "Olivina", "Ouro",
-    //                                 "Pirita", "Piroxênio", "Plagioclásio", "Quartzo",
-    //                                 "Romanechita", "Talco", "Topázio", "Turmalina"};
     
     // //lista.length
     // public int[,] numeros = new int[2, 1]{{0}, {0}};
@@ -136,17 +113,24 @@ public class Controller : MonoBehaviour
             break;
             
         }
-        
-        // switch (filterClass)
-        // {
-        //     case 0:
-        //         //todos
-        //     break;
-        //     case 1:
-        //         //ÓxidoOrder();
-        //     break;
+
+        switch (filterClass)
+        {
+            case 0:
+                infoButtons[0].SetActive(false);
+                infoButtons[1].SetActive(false);
+            break;
+            case 1:
+                infoButtons[0].SetActive(true);
+                infoButtons[1].SetActive(false);
+            break;
+            case 2:
+                infoButtons[0].SetActive(false);
+                infoButtons[1].SetActive(true);
+            break;
             
-        // }
+        }
+    
     }
 
     public void SetButton()
@@ -180,8 +164,7 @@ public class Controller : MonoBehaviour
 
     public void LimitFilterClass(int j, string[] names) // limete do filtro, nome do boto
     {
-        
-        if(filterClass == j)
+        if(filterClass >= j)
         {
             filterClass = 0;
         }else{
@@ -189,20 +172,49 @@ public class Controller : MonoBehaviour
         }
         nameFilter[0].text = names[filterClass];
     }
-    public void ChangeFilterClass(int l) // filtrar a classe/grupo
+
+    public void LimitFilterGroupSilicate(int k, string[] names) // limete do filtro, nome do boto
+    {
+
+        if(filterGroupSilicate >= k)
+        {
+            filterGroupSilicate = 0;
+        }else{
+            filterGroupSilicate++;
+        }
+        nameFilter[1].text = names[filterGroupSilicate];
+    }
+
+    public void LimitFilterGroupNotSilicate(int l, string[] names) // limete do filtro, nome do boto
+    {
+
+        if(filterGroupSilicate >= l)
+        {
+            filterGroupNotSilicate = 0;
+        }else{
+            filterGroupNotSilicate++;
+        }
+        nameFilter[2].text = names[filterGroupNotSilicate];
+    }
+
+    public void ChangeFilterClass(int m) // filtrar a classe/grupo
     {
         // l == 0: class | l == 1: groupSilicates | l == 2: groupNotSilicates
-        switch (l)
+        switch (m)
         {  
             case 0:
                 string[] classes = {"Todos", "Silicatos", "Não Silicatos"};
-                LimitFilterClass(2, classes);
+                LimitFilterClass(classes.Length, classes);
             break;
             case 1:
-                //LimitFilterClass(7);
+
+                string[] groupSillicate = {"Todos", "Neso", "Soro", "Ciclo", "Ino", "Filo", "Tecto"};
+                LimitFilterGroupSilicate(groupSillicate.Length, groupSillicate);
             break;
             case 2:
-                //LimitFilterClass(6);
+
+            string[] groupNotSillicate = {"Todos", "Sulfetos", "Sulfatos", "Fosfatos", "E. Nativos", "Óxidos", "Hidróxidos", "Carbonatos", "Haletos"};
+                LimitFilterGroupNotSilicate(groupNotSillicate.Length, groupNotSillicate);
             break;
         }
     }
@@ -211,6 +223,20 @@ public class Controller : MonoBehaviour
     {
         canvas[0].SetActive(true);
         canvas[1].SetActive(false);
+    }
+
+    public void Preencher(string[] lista)
+    {
+        for(int i=0; i<40; i++)// silicatellist
+        {
+            if(i < lista.Length)
+            {
+                gemButtons[i].SetActive(true);
+                gemButtons[i].GetComponent<GemButton>().title = lista[i];
+            }else{
+                gemButtons[i].SetActive(false);
+                }  
+        }
     }
 
     public void AlphabeticalOrder()// Ordem alfabetica
@@ -225,23 +251,43 @@ public class Controller : MonoBehaviour
                 }
             break;
             case 1: //silicatos 
-            //          
-            //   criar um swtch case para filterGroup aki dentro!
-                string[] silicateList = {"Anfibólio", "Berilo", "Biotita", "Caulinita", 
-                                         "Cianita", "Clorita", "Epidoto", "Esmectita", 
-                                         "Espodumênio", "Granada", "Illita", "K-feldspato", 
-                                         "Muscovita", "Olivina", "Piroxênio", "Plagioclásio",
-                                         "Quartzo", "Talco", "Topázio", "Turmalina"};
 
-                for(int i=0; i<40; i++)// silicatellist
+                switch (filterGroupSilicate)
                 {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = silicateList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                    //{"Todos", "Neso", "Soro", "Ciclo", "Ino", "Filo", "Tecto"};
+                    case 0: //todos
+                        string[] all = {"Anfibólio", "Berilo", "Biotita", "Caulinita", 
+                                        "Cianita", "Clorita", "Epidoto", "Esmectita", 
+                                        "Espodumênio", "Granada", "Illita", "K-feldspato", 
+                                        "Muscovita", "Olivina", "Piroxênio", "Plagioclásio",
+                                        "Quartzo", "Talco", "Topázio", "Turmalina"};
+                        Preencher(all);
+                    break;
+                    case 1://neso
+                        string[] neso = {"Cianita", "Granada", "Olivina","Topázio"};
+                        Preencher(neso);
+                    break;
+                    case 2://soro
+                        string[] soro = {"Epidoto"};
+                        Preencher(soro);
+                    break;
+                    case 3://ciclo
+                        string[] ciclo = {"Berilo","Turmalina"};
+                        Preencher(ciclo);
+                    break;
+                    case 4://ino
+                        string[] ino = {"Anfibólio", "Espodumênio", "Piroxênio"};
+                        Preencher(ino);
+                    break;
+                    case 5://filo
+                        string[] filo = {"Biotita", "Caulinita", "Clorita", "Esmectita", 
+                                                 "Illita", "Muscovita", "Talco"};
+                        Preencher(filo);
+                    break;
+                    case 6://tetco
+                        string[] tecto = {"K-feldspato", "Plagioclásio", "Quartzo"};
+                        Preencher(tecto);
+                    break;
                 }
 
                 // Pensei em uma forma de filtrar as classes usando loops identados
@@ -296,25 +342,53 @@ public class Controller : MonoBehaviour
                 // }
             break;
             case 2: //não silicatos
-            
-                //   criar um swtch case para filterGroup aki dentro!
-                string[] notSilicateList = {"Apatita", "Barita", "Bauxita", "Calcita", 
+
+                switch (filterGroupNotSilicate)
+                {
+                    //{"Todos", "Sulfetos", "Sulfatos", "Fosfatos", "E. Nativos", "Óxidos", "Hidróxidos", "Carbonatos", "Haletos"};
+                    case 0: //todos
+                        string[] all = {"Apatita", "Barita", "Bauxita", "Calcita", 
                                             "Calcopirita", "Cassiterita", "Coríndon", "Diamante", 
                                             "Dolomita", "Esfalerita", "Fluorita", "Galena", 
                                             "Gipsita", "Hematita", "Ilmenita", "Magnetita", 
                                             "Molibdenita", "Ouro", "Pirita", "Romanechita"};
-                
-                for(int i=0; i<40; i++)
-                {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = notSilicateList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                        Preencher(all);
+                    break;
+                    case 1://Sulfetos
+                        string[] sulfetos = {"Calcopirita", "Esfalerita", "Galena", "Molibdenita",
+                                            "Pirita"};
+                        Preencher(sulfetos);
+                    break;
+                    case 2://Sulfatos
+                        string[] sulfatos = {"Barita", "Gipsita"};
+                        Preencher(sulfatos);
+                    break;
+                    case 3://Fosfatos
+                        string[] fosfatos = {"Apatita"};
+                        Preencher(fosfatos);
+                    break;
+                    case 4://eNativos
+                        string[] eNativos = {"Diamante", "Ouro"};
+                        Preencher(eNativos);
+                    break;
+                    case 5://oxidos
+                        string[] oxidos = {"Cassiterita", "Coríndon", "Hematita", "Ilmenita", 
+                                        "Magnetita", "Romanechita"};
+                        Preencher(oxidos);
+                    break;
+                    case 6://Hidróxidos
+                        string[] hidróxidos = {"Bauxita"};
+                        Preencher(hidróxidos);
+                    break;
+                    case 7://Carbonatos
+                        string[] carbonatos = {"Calcita", "Dolomita"};
+                        Preencher(carbonatos);
+                    break;
+                    case 8://Haletos
+                        string[] haletos = {"Fluorita"};
+                        Preencher(haletos);
+                    break;
                 }
-
             break;
             
         }
@@ -336,39 +410,93 @@ public class Controller : MonoBehaviour
             break;
             case 1: // silicatos
 
-                string[] silicateHardList = {"Talco", "Caulinita", "Esmectita", "Illita",
-                                                "Clorita", "Biotita","Muscovita","Anfibólio", 
-                                                "K-feldspato","Plagioclásio","Cianita", "Epidoto",
-                                                "Espodumênio", "Piroxênio", "Olivina", "Quartzo",
-                                                "Granada", "Berilo", "Turmalina", "Topázio"};
-                for(int i=0; i<40; i++)
+                switch (filterGroupSilicate)
                 {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = silicateHardList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                    
+                    //{"Todos", "Neso", "Soro", "Ciclo", "Ino", "Filo", "Tecto"};
+                    case 0: //todos
+                        string[] all = {"Talco", "Caulinita", "Esmectita", "Illita",
+                                        "Clorita", "Biotita","Muscovita","Anfibólio", 
+                                        "K-feldspato","Plagioclásio","Cianita", "Epidoto",
+                                        "Espodumênio", "Piroxênio", "Olivina", "Quartzo",
+                                        "Granada", "Berilo", "Turmalina", "Topázio"};
+                        Preencher(all);
+                    break;
+                    case 1://neso
+                        string[] neso = {"Cianita", "Olivina", "Granada", "Topázio"};
+                        Preencher(neso);
+                    break;
+                    case 2://soro
+                        string[] soro = {"Epidoto"};
+                        Preencher(soro);
+                    break;
+                    case 3://ciclo
+                        string[] ciclo = {"Berilo","Turmalina"};
+                        Preencher(ciclo);
+                    break;
+                    case 4://ino
+                        string[] ino = {"Anfibólio", "Espodumênio", "Piroxênio"};
+                        Preencher(ino);
+                    break;
+                    case 5://filo
+                        string[] filo = {"Talco", "Caulinita", "Esmectita", "Illita",
+                                        "Clorita", "Biotita",  "Muscovita" };
+                        Preencher(filo);
+                    break;
+                    case 6://tetco
+                        string[] tecto = {"K-feldspato", "Plagioclásio", "Quartzo"};
+                        Preencher(tecto);
+                    break;
                 }
 
             break;
             case 2: // não silicatos
 
-                string[] NotSilicateHardList = {"Molibdenita", "Gipsita", "Bauxita", "Galena", 
-                                                "Ouro", "Calcita", "Barita", "Calcopirita", 
-                                                "Dolomita", "Esfalerita", "Fluorita", "Apatita",
-                                                "Ilmenita", "Romanechita", "Hematita", "Magnetita", 
-                                                "Pirita", "Cassiterita", "Coríndon", "Diamante"};
-                for(int i=0; i<40; i++)
+                switch (filterGroupNotSilicate)
                 {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = NotSilicateHardList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                    //{"Todos", "Sulfetos", "Sulfatos", "Fosfatos", "E. Nativos", "Óxidos", "Hidróxidos", "Carbonatos", "Haletos"};
+                    case 0: //todos
+                        string[] all = {"Molibdenita", "Gipsita", "Bauxita", "Galena", 
+                                        "Ouro", "Calcita", "Barita", "Calcopirita", 
+                                        "Dolomita", "Esfalerita", "Fluorita", "Apatita",
+                                        "Ilmenita", "Romanechita", "Hematita", "Magnetita", 
+                                        "Pirita", "Cassiterita", "Coríndon", "Diamante"};
+                        Preencher(all);
+                    break;
+                    case 1://Sulfetos
+                        string[] sulfetos = {"Molibdenita", "Galena","Calcopirita", "Esfalerita",  
+                                            "Pirita"};
+                        Preencher(sulfetos);
+                    break;
+                    case 2://Sulfatos
+                        string[] sulfatos = {"Gipsita", "Barita"};
+                        Preencher(sulfatos);
+                    break;
+                    case 3://Fosfatos
+                        string[] fosfatos = {"Apatita"};
+                        Preencher(fosfatos);
+                    break;
+                    case 4://eNativos
+                        string[] eNativos = {"Ouro", "Diamante",};
+                        Preencher(eNativos);
+                    break;
+                    case 5://oxidos
+                        string[] oxidos = { "Ilmenita", "Romanechita", "Hematita",
+                                            "Magnetita", "Cassiterita", "Coríndon"};
+                        Preencher(oxidos);
+                    break;
+                    case 6://Hidróxidos
+                        string[] hidróxidos = {"Bauxita"};
+                        Preencher(hidróxidos);
+                    break;
+                    case 7://Carbonatos
+                        string[] carbonatos = {"Calcita", "Dolomita"};
+                        Preencher(carbonatos);
+                    break;
+                    case 8://Haletos
+                        string[] haletos = {"Fluorita"};
+                        Preencher(haletos);
+                    break;
                 }
             break;
         }
@@ -391,21 +519,43 @@ public class Controller : MonoBehaviour
             break;
             case 1: // silicatos
 
-                string[] silicateDensList = {"K-feldspato", "Caulinita", "Esmectita", "Illita", 
+                switch (filterGroupSilicate)
+                {
+                    
+                    //{"Todos", "Neso", "Soro", "Ciclo", "Ino", "Filo", "Tecto"};
+                    case 0: //todos
+                        string[] all = {"K-feldspato", "Caulinita", "Esmectita", "Illita", 
                                             "Plagioclásio", "Berilo", "Quartzo", "Talco",
                                             "Muscovita", "Biotita", "Clorita", "Olivina", 
                                             "Anfibólio", "Turmalina", "Piroxênio", "Epidoto",
                                             "Espodumênio", "Topázio", "Cianita", "Granada"};
-
-                for(int i=0; i<40; i++)
-                {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = silicateDensList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                        Preencher(all);
+                    break;
+                    case 1://neso
+                        string[] neso = { "Olivina", "Topázio", "Cianita","Granada"};
+                        Preencher(neso);
+                    break;
+                    case 2://soro
+                        string[] soro = {"Epidoto"};
+                        Preencher(soro);
+                    break;
+                    case 3://ciclo
+                        string[] ciclo = {"Berilo","Turmalina"};
+                        Preencher(ciclo);
+                    break;
+                    case 4://ino
+                        string[] ino = {"Anfibólio", "Piroxênio", "Espodumênio"};
+                        Preencher(ino);
+                    break;
+                    case 5://filo
+                        string[] filo = {"Caulinita", "Esmectita","Illita", "Talco",   
+                                         "Muscovita", "Biotita","Clorita" };
+                        Preencher(filo);
+                    break;
+                    case 6://tetco
+                        string[] tecto = {"K-feldspato", "Plagioclásio", "Quartzo"};
+                        Preencher(tecto);
+                    break;
                 }
 
             break;
@@ -417,15 +567,51 @@ public class Controller : MonoBehaviour
                                         "Diamante", "Pirita","Magnetita", "Hematita", 
                                         "Romanechita", "Cassiterita", "Galena", "Ouro"};
 
-                for(int i=0; i<40; i++)
+                switch (filterGroupNotSilicate)
                 {
-                    if(i<20)
-                    {
-                        gemButtons[i].SetActive(true);
-                        gemButtons[i].GetComponent<GemButton>().title = notSilicateDensList[i];
-                    }else{
-                        gemButtons[i].SetActive(false);
-                    }  
+                    //{"Todos", "Sulfetos", "Sulfatos", "Fosfatos", "E. Nativos", "Óxidos", "Hidróxidos", "Carbonatos", "Haletos"};
+                    case 0: //todos
+                        string[] all = {"Bauxita", "Gipsita", "Calcita", "Dolomita",
+                                        "Apatita","Fluorita", "Calcopirita", "Coríndon", 
+                                        "Esfalerita", "Barita", "Ilmenita", "Molibdenita", 
+                                        "Diamante", "Pirita","Magnetita", "Hematita", 
+                                        "Romanechita", "Cassiterita", "Galena", "Ouro"};
+                        Preencher(all);
+                    break;
+                    case 1://Sulfetos
+                        string[] sulfetos = {"Calcopirita", "Esfalerita", "Molibdenita",
+                                            "Pirita", "Galena"};
+                        Preencher(sulfetos);
+                    break;
+                    case 2://Sulfatos
+                        string[] sulfatos = {"Gipsita", "Barita"};
+                        Preencher(sulfatos);
+                    break;
+                    case 3://Fosfatos
+                        string[] fosfatos = {"Apatita"};
+                        Preencher(fosfatos);
+                    break;
+                    case 4://eNativos
+                        string[] eNativos = {"Diamante", "Ouro"};
+                        Preencher(eNativos);
+                    break;
+                    case 5://oxidos
+                        string[] oxidos = {"Coríndon", "Ilmenita", "Magnetita",
+                                            "Hematita","Romanechita", "Cassiterita"};
+                        Preencher(oxidos);
+                    break;
+                    case 6://Hidróxidos
+                        string[] hidróxidos = {"Bauxita"};
+                        Preencher(hidróxidos);
+                    break;
+                    case 7://Carbonatos
+                        string[] carbonatos = {"Calcita", "Dolomita"};
+                        Preencher(carbonatos);
+                    break;
+                    case 8://Haletos
+                        string[] haletos = {"Fluorita"};
+                        Preencher(haletos);
+                    break;
                 }
 
             break;
