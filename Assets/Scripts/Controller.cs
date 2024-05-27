@@ -74,19 +74,20 @@ public class Controller : MonoBehaviour
                                     "Romanechita", "Cassiterita", "Galena", "Ouro"};
 
     //slicatos na ordem de grupo
-    public string[] silicateList = {"Granada", "Olivina", "Cianita", "Topázio", 
-                                    "Epidoto", "Turmalina", "Berilo", "Piroxênio", 
-                                    "Anfibólio", "Espodumênio", "Caulinita", "Esmectita", 
-                                    "Illita", "Muscovita", "Biotita", "Talco",
-                                    "Clorita", "K-feldspato", "Plagioclásio", "Quartzo"};
+    // public string[] silicateList = {"Granada", "Olivina", "Cianita", "Topázio", 
+    //                                 "Epidoto", "Turmalina", "Berilo", "Piroxênio", 
+    //                                 "Anfibólio", "Espodumênio", "Caulinita", "Esmectita", 
+    //                                 "Illita", "Muscovita", "Biotita", "Talco",
+    //                                 "Clorita", "K-feldspato", "Plagioclásio", "Quartzo"};
 
-    public string[] notSilicateList = {"Esfalerita", "Galena", "Pirita", "Calcopirita", 
-                                       "Molibdenita", "Barita", "Gipsita", "Apatita", 
-                                       "Diamante", "Ouro", "Hematita", "Ilmenita", 
-                                       "Cassiterita", "Romanechita", "Magnetita", "Coríndon",
-                                       "Bauxita", "Calcita", "Dolomita", "Fluorita"};
+    // public string[] notSilicateList = {"Esfalerita", "Galena", "Pirita", "Calcopirita", 
+    //                                    "Molibdenita", "Barita", "Gipsita", "Apatita", 
+    //                                    "Diamante", "Ouro", "Hematita", "Ilmenita", 
+    //                                    "Cassiterita", "Romanechita", "Magnetita", "Coríndon",
+    //                                    "Bauxita", "Calcita", "Dolomita", "Fluorita"};
   
-    public TMPro.TextMeshProUGUI[] infos; //textos nas infos
+    public TMPro.TextMeshProUGUI[] infos; //textos nas 
+    public TMPro.TextMeshProUGUI[] nameFilter; //nome dos butao de filtro
 
     // public bool growingOrder; // ordem crescente
     public int filter; // 0: alfabetica, 1: dureza
@@ -172,9 +173,38 @@ public class Controller : MonoBehaviour
     }
 
 
-    public void ChangeFilter(int i)
+    public void ChangeFilter(int i) // filtros de ordem
     {
         filter = i;
+    }
+
+    public void LimitFilterClass(int j, string[] names) // limete do filtro, nome do boto
+    {
+        
+        if(filterClass == j)
+        {
+            filterClass = 0;
+        }else{
+                filterClass++;
+        }
+        nameFilter[0].text = names[filterClass];
+    }
+    public void ChangeFilterClass(int l) // filtrar a classe/grupo
+    {
+        // l == 0: class | l == 1: groupSilicates | l == 2: groupNotSilicates
+        switch (l)
+        {  
+            case 0:
+                string[] classes = {"Todos", "Silicatos", "Não Silicatos"};
+                LimitFilterClass(2, classes);
+            break;
+            case 1:
+                //LimitFilterClass(7);
+            break;
+            case 2:
+                //LimitFilterClass(6);
+            break;
+        }
     }
 
     public void BackMenu() // entrar e sair do menu de detalhes
@@ -183,7 +213,7 @@ public class Controller : MonoBehaviour
         canvas[1].SetActive(false);
     }
 
-    public void AlphabeticalOrder()// Ordenar nome
+    public void AlphabeticalOrder()// Ordem alfabetica
     {
         switch (filterClass)
         {
@@ -194,7 +224,30 @@ public class Controller : MonoBehaviour
                     gemButtons[i].GetComponent<GemButton>().title = mineralList[i,0];
                 }
             break;
-            case 1: //silicatos
+            case 1: //silicatos 
+            //          
+            //   criar um swtch case para filterGroup aki dentro!
+                string[] silicateList = {"Anfibólio", "Berilo", "Biotita", "Caulinita", 
+                                         "Cianita", "Clorita", "Epidoto", "Esmectita", 
+                                         "Espodumênio", "Granada", "Illita", "K-feldspato", 
+                                         "Muscovita", "Olivina", "Piroxênio", "Plagioclásio",
+                                         "Quartzo", "Talco", "Topázio", "Turmalina"};
+
+                for(int i=0; i<40; i++)// silicatellist
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = silicateList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+
+                // Pensei em uma forma de filtrar as classes usando loops identados
+                // mas por algum motivo o unity trava quando ativo
+                // então por hora vou criar as listas filtradas dentro da função
+
                 // int a = 0;
                 // int b = 0;
 
@@ -243,7 +296,25 @@ public class Controller : MonoBehaviour
                 // }
             break;
             case 2: //não silicatos
+            
+                //   criar um swtch case para filterGroup aki dentro!
+                string[] notSilicateList = {"Apatita", "Barita", "Bauxita", "Calcita", 
+                                            "Calcopirita", "Cassiterita", "Coríndon", "Diamante", 
+                                            "Dolomita", "Esfalerita", "Fluorita", "Galena", 
+                                            "Gipsita", "Hematita", "Ilmenita", "Magnetita", 
+                                            "Molibdenita", "Ouro", "Pirita", "Romanechita"};
                 
+                for(int i=0; i<40; i++)
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = notSilicateList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+
             break;
             
         }
@@ -253,20 +324,115 @@ public class Controller : MonoBehaviour
 
     public void HardnessOrder() // Ordenar dureza
     { 
-        for(int i=0; i<40; i++)
+        switch (filterClass)
         {
-            gemButtons[i].GetComponent<GemButton>().title = hardnessList[i];
+            case 0: //todos
+                for(int i=0; i<40; i++)
+                {
+                    gemButtons[i].SetActive(true);
+                    gemButtons[i].GetComponent<GemButton>().title = hardnessList[i];
+                }
+                
+            break;
+            case 1: // silicatos
+
+                string[] silicateHardList = {"Talco", "Caulinita", "Esmectita", "Illita",
+                                                "Clorita", "Biotita","Muscovita","Anfibólio", 
+                                                "K-feldspato","Plagioclásio","Cianita", "Epidoto",
+                                                "Espodumênio", "Piroxênio", "Olivina", "Quartzo",
+                                                "Granada", "Berilo", "Turmalina", "Topázio"};
+                for(int i=0; i<40; i++)
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = silicateHardList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+
+            break;
+            case 2: // não silicatos
+
+                string[] NotSilicateHardList = {"Molibdenita", "Gipsita", "Bauxita", "Galena", 
+                                                "Ouro", "Calcita", "Barita", "Calcopirita", 
+                                                "Dolomita", "Esfalerita", "Fluorita", "Apatita",
+                                                "Ilmenita", "Romanechita", "Hematita", "Magnetita", 
+                                                "Pirita", "Cassiterita", "Coríndon", "Diamante"};
+                for(int i=0; i<40; i++)
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = NotSilicateHardList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+            break;
         }
+
         SetButton();
     }
 
-    public void DensityOrder() // Ordenar demsidade
+    public void DensityOrder() // Ordenar densidade
     {
-        for(int i=0; i<40; i++)
+      
+        switch (filterClass)
         {
-            gemButtons[i].GetComponent<GemButton>().title = densityList[i];
+            case 0: //todos
+                for(int i=0; i<40; i++)
+                {
+                    gemButtons[i].SetActive(true);
+                    gemButtons[i].GetComponent<GemButton>().title = densityList[i];
+                }
+                
+            break;
+            case 1: // silicatos
+
+                string[] silicateDensList = {"K-feldspato", "Caulinita", "Esmectita", "Illita", 
+                                            "Plagioclásio", "Berilo", "Quartzo", "Talco",
+                                            "Muscovita", "Biotita", "Clorita", "Olivina", 
+                                            "Anfibólio", "Turmalina", "Piroxênio", "Epidoto",
+                                            "Espodumênio", "Topázio", "Cianita", "Granada"};
+
+                for(int i=0; i<40; i++)
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = silicateDensList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+
+            break;
+            case 2: // não silicatos
+
+                string[] notSilicateDensList = {"Bauxita", "Gipsita", "Calcita", "Dolomita",
+                                        "Apatita","Fluorita", "Calcopirita", "Coríndon", 
+                                        "Esfalerita", "Barita", "Ilmenita", "Molibdenita", 
+                                        "Diamante", "Pirita","Magnetita", "Hematita", 
+                                        "Romanechita", "Cassiterita", "Galena", "Ouro"};
+
+                for(int i=0; i<40; i++)
+                {
+                    if(i<20)
+                    {
+                        gemButtons[i].SetActive(true);
+                        gemButtons[i].GetComponent<GemButton>().title = notSilicateDensList[i];
+                    }else{
+                        gemButtons[i].SetActive(false);
+                    }  
+                }
+
+            break;
         }
-        SetButton(); 
+    
+
+        SetButton();
     }
   
 }
