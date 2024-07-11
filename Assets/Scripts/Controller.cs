@@ -8,45 +8,45 @@ public class Controller : MonoBehaviour
     public GameObject[] gemButtons;
     public GameObject[] canvas;
 
-    // [nome, dureza, densidade, classificação, formula, sistema, diafaneidade, clivagem, traço, brilho]
+    // [nome, dureza, densidade, classificação, formula, sistema, diafaneidade, clivagem, traço, brilho, outros]
     public string[,] mineralList = new string[40,10]
                                     {{"Anfibólio", "5-6", "3.10", "Inossilicatos(c. dupla)", "", "Ortorrômbico, Monoclínico", "", "", "", ""}, 
-                                    {"Apatita", "5", "3.18", "Fosfato", "", "", "", "", "", ""}, //mohs
-                                    {"Barita", "3-3.5", "4.50", "Sulfato", "", "", "", "", "", ""}, 
-                                    {"Bauxita", "1-3.5", "2.25", "Hidróxido", "", "", "", "", "", ""}, 
+                                    {"Apatita", "5", "3.18", "Fósfato", "Ca5(PO4)3 (F,Cl,OH)", "Hexagonal", "Translúcido", "Imperfeita[2]", "Incolor/Branco", "Não-metálico", "Azul e cores variadas. Usualmente em prismas hexagonais"}, //mohs
+                                    {"Barita", "3-3.5", "4.50", "Sulfato", "BaSO4", "Ortorrômbico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico", "Branco, cores variadas. Brilho nacarado. Mineral-minério de Bário"}, 
+                                    {"Bauxita", "1-3.5", "2.25", "Hidróxido", "misturas de hidróxos de Al", "Monoclínico", "Opáco", "Perfeita[1]", "Laranja", "Não-metálico", "(Gibbsita) Amarelo, castanho. Terroso, semelhante a argila "}, 
                                     {"Berilo", "7.5-8", "2.65", "Ciclossilicatos", "", "Hexagonal", "Translúcido", "Imperfeita[1]", "Incolor", "Não-metálico"}, 
                                     {"Biotita", "2.5-3", "3.00", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Calcita", "3", "2.85", "Carbonato", "", "", "", "", "", ""}, //mohs
-                                    {"Calcopirita", "3.5-4", "4.00", "Sufeto", "", "", "", "", "", ""}, 
-                                    {"Cassiterita", "6-7", "7.00", "Óxido", "", "", "", "", "", ""}, 
+                                    {"Calcita", "3", "2.85", "Carbonato", "CaCO3", "Romboédrico", "Translúcido", "Perfeita", "Incolor", "Não-metálico(Vítro)", "Incolor e cores variadas. Esfervece em ácido clorídrico frio"}, //mohs
+                                    {"Calcopirita", "3.5-4", "4.00", "Sufeto", "CuFeS2", "Tetragonal", "Opáco", "Ausente", "Preto", "Metálico", "Amarelo latão. Mais frágil que a pirita"}, 
+                                    {"Cassiterita", "6-7", "7.00", "Óxido", "SnO2", "Tetragonal", "Opáco", "Imperfeito[1]", "Incolor/Castalnho-claro", "Não-metálico", "Castanho a preto. Mineral-minério de estanho"}, 
                                     {"Caulinita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Cianita", "4.5-7", "3.60", "Nesossilicatos", "Al2SiO5", "Ortorrômbico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico"}, 
                                     {"Clorita", "2-2.5", "3.00", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Coríndon", "9", "4.00", "Óxido", "", "", "", "", "", ""}, //mohs
-                                    {"Diamante", "10", "5.00", "Elementos Nativos", "", "", "", "", "", ""}, //mohs
-                                    {"Dolomita", "3.5-4", "3.00", "Carbonato", "", "", "", "", "", ""}, 
+                                    {"Coríndon", "9", "4.00", "Óxido", "Al2O3", "Hexagonal", "Translúcido", "Ausente", "Incolor", "Não-metálico", "Roxo e cores váriadas. Forma cubica"}, //mohs
+                                    {"Diamante", "10", "5.00", "Elementos Nativos", "C", "Isométrico", "Translúcido", "Ausente", "Incolor", "Cores variadas. Faces podem ser curvas"}, //mohs
+                                    {"Dolomita", "3.5-4", "3.00", "Carbonato", "CaMg(CO3)2", "Romoédrico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico", "Incolor, branco, roseo. Brilho macarado"}, 
                                     {"Epidoto", "6-7", "3.40", "Sorossilicatos", "", "Monoclínico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico"}, 
-                                    {"Esfalerita", "3.5-4", "4.00", "Sulfeto", "", "", "", "", "", ""}, 
+                                    {"Esfalerita", "3.5-4", "4.00", "Sulfeto", "ZnS", "Isométrico", "Opáco", "Perfeita[6]", "Preto", "Não-metálico", "Preto a castanho escuro, raramente vermelho."}, 
                                     {"Esmectita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Espodumênio", "6-7", "3.50", "Inossilicatos(c. simples)", "", "", "", "Perfeita[2]", "Incolor", "Não-metálico"}, 
-                                    {"Fluorita", "4", "3.40", "Haleto", "", "", "", "", "", ""}, //mohs
-                                    {"Galena", "2-3", "8.90", "Sulfeto", "", "", "", "", "", ""}, 
-                                    {"Gipsita", "2", "2.30", "Sulfato", "", "", "", "", "", ""}, //mohs
+                                    {"Fluorita", "4", "3.40", "Haleto", "CaF2", "Isométrico", "Translúciodo", "Perfeita[4]", "Incolor", "Não-metálico", "Verde, cores variadas. Em cristais cubicos geminados por penetração"}, //mohs
+                                    {"Galena", "2-3", "8.90", "Sulfeto", "PbS", "Isométrico", "Opáco", "Perfeita[3]", "Cinza", "Metálico", "Cinza. Mineral-minério de chumbo"}, 
+                                    {"Gipsita", "2", "2.30", "Sulfato", "CaSO4.2H2O", "Monoclínico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico", "Branco, cinza. Fibroso com brilho sedoso(gesso)"}, //mohs
                                     {"Granada", "6.5-7.5", "3.80", "Nesossilicatos", "", "Isométrico", "Translúcido", "Sem clivagem", "Incolor", "Não-metálico"},
-                                    {"Hematita", "5.5-6.5", "5.20", "Óxido", "", "", "", "", "", ""}, 
+                                    {"Hematita", "5.5-6.5", "5.20", "Óxido", "Fe2O3", "Hexagonal", "Opáco", "Ausente", "Vermelho", "Metálico", "Maciço, radiado"}, 
                                     {"Illita", "1-2", "2.60", "Filossilicatos", "", "", "", "", "", ""}, 
-                                    {"Ilmenita", "5-6", "4.50", "Óxido", "", "", "", "", "", ""},
+                                    {"Ilmenita", "5-6", "4.50", "Óxido", "FeTiO3", "Romboédrico", "Opáco", "Ausente", "Preto", "Metálico", "Castanho escuro, preto. Levemente magnético. Mineral minério de titaneo"},
                                     {"K-feldspato", "6", "2.57", "Tectossilicatos", "", "", "", "", "", ""}, //mohs
-                                    {"Magnetita", "5.5-6.5", "5.17", "Óxido", "", "", "", "", "", ""}, 
-                                    {"Molibdenita", "1-1.5", "4.70", "Sulfeto", "", "", "", "", "", ""},
+                                    {"Magnetita", "5.5-6.5", "5.17", "Óxido", "Fe3O4", "Isométrico", "Opáco", "Ausente", "Preto", "Metálico", "Preto. Fotermente magnético"}, 
+                                    {"Molibdenita", "1-1.5", "4.70", "Sulfeto", "MoS2", "Hexagonal", "Opáco", "Perfeita[1]", "Cinza/Preto/Esverdeado", "Cinza, preto azulado. Tato untoso"},
                                     {"Muscovita", "2.5-4", "2.80", "Filossilicatos", "", "", "", "", "", ""}, 
                                     {"Olivina", "6.5-7", "3.00", "Nesossilicatos", "", "Ortorrômbico", "Translúcido", "Imperfeita[2]", "Incolor", "Não-metálico"},
-                                    {"Ouro", "2.5-3", "19.32", "Elementos Nativos", "", "", "", "", "", ""},
-                                    {"Pirita", "6-6.5", "5.02", "Sulfeto", "", "", "", "", "", ""},
+                                    {"Ouro", "2.5-3", "19.32", "Elementos Nativos", "Au", "Isométrico", "Opáco", "Ausente", "Amarelo", "Amarelo. Maleável"},
+                                    {"Pirita", "6-6.5", "5.02", "Sulfeto", "FeS2", "Isométrico", "Opáco", "Ausente", "Preto", "Metálico", "Amarelo latão. Sulfeto mais comum"},
                                     {"Piroxênio", "5-6", "3.20", "Inossilicatos(c. simples)", "", "Ortorrômbico/Monoclínico", "Transparente/Translúcido", "Perfeita[2]", "Varíavel", "Não-metálico"}, 
                                     {"Plagioclásio", "6-6.5", "2.62", "Tectossilicatos", "", "", "", "", "", ""},
                                     {"Quartzo", "7", "2.65", "Tectossilicatos", "", "", "", "", "", ""}, //mohs
-                                    {"Romanechita", "5-5.5", "6.56", "Óxido", "", "", "", "", "", ""},
+                                    {"Romanechita", "5-5.5", "6.56", "Óxido", "(BaH2O)2 ...", "Monoclínico", "Opáco", "Ausente", "Preto", "Submetálico", "Castanho escuro a preto. Maciço compacto, botroidal e estactítico"},
                                     {"Talco", "1", "2.75", "Filossilicatos", "", "", "", "", "", ""}, //mohs
                                     {"Topázio", "8", "3.50", "Nesossilicatos", "", "Ortorrômbico", "Translúcido", "Perfeita[1]", "Incolor", "Não-metálico"}, //mohs
                                     {"Turmalina", "7-7.5", "3.10", "Ciclossilicatos", "", "Hexagonal", "Translúcido", "Sem clivagem", "Incolor", "Não-metálico"}};
@@ -187,8 +187,6 @@ public class Controller : MonoBehaviour
         }else{
             filterGroupSilicate = 0; 
         }
-
-        
     }
 
     public void LimitFilterGroupNotSilicate(int l) // limete do filtro, nome do boto
