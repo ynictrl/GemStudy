@@ -9,8 +9,8 @@ public class Controller : MonoBehaviour
     public GameObject[] canvas;
 
     // [nome, dureza, densidade, classificação, formula, sistema, diafaneidade, clivagem, traço, brilho, outros]
-    public string[,] mineralList = new string[40,10]
-                                    {{"Anfibólio", "5-6", "3.10", "Inossilicatos(c. dupla)", "...", "Ortorrômbico, Monoclínico", "Translúcido", "Perfeita[2]{110}", "Incolor/váriado", "Não-metálico", "Branco,verde,preto. Prismáticos, quebradiços, fibrosos, colunares(amianto). Ex:Hornblenda"}, 
+    public string[,] mineralList = new string[40,11]
+                                    {{"Anfibólio", "5-6", "3.10", "Inossilicatos        (cadeia dupla)", "...", "Ortorrômbico, Monoclínico", "Translúcido", "Perfeita[2]{110}", "Incolor/váriado", "Não-metálico", "Branco,verde,preto. Prismáticos, quebradiços, fibrosos, colunares(amianto). Ex:Hornblenda"}, 
                                     {"Apatita", "5", "3.18", "Fósfato", "Ca5(PO4)3 (F,Cl,OH)", "Hexagonal", "Translúcido", "Imperfeita[2]", "Incolor/Branco", "Não-metálico", "Azul e cores variadas. Usualmente em prismas hexagonais"}, //mohs
                                     {"Barita", "3-3.5", "4.50", "Sulfato", "BaSO4", "Ortorrômbico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico", "Branco, cores variadas. Brilho nacarado. Mineral-minério de Bário"}, 
                                     {"Bauxita", "1-3.5", "2.25", "Hidróxido", "misturas de hidróxos de Al", "Monoclínico", "Opáco", "Perfeita[1]", "Laranja", "Não-metálico", "(Gibbsita) Amarelo, castanho. Terroso, semelhante a argila "}, 
@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
                                     {"Cianita", "4.5-7", "3.60", "Nesossilicatos", "Al2SiO5", "Ortorrômbico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico", "Azul, cresce em coluna. Paralela ao comprimento"}, 
                                     {"Clorita", "2-2.5", "3.00", "Filossilicatos", "(Mg,Fe)3(OH)6", "Monoclínico", "Translúcido", "Perfeita[1]", "Branco", "Não-metálico(nacarado,vítreo)", "Verde variado. Laminulas flexíveis, mas não elásticas."}, 
                                     {"Coríndon", "9", "4.00", "Óxido", "Al2O3", "Hexagonal", "Translúcido", "Ausente", "Incolor", "Não-metálico", "Roxo e cores váriadas. Forma cubica"}, //mohs
-                                    {"Diamante", "10", "5.00", "Elementos Nativos", "C", "Isométrico", "Translúcido", "Ausente", "Incolor", "Cores variadas. Faces podem ser curvas"}, //mohs
+                                    {"Diamante", "10", "5.00", "Elementos Nativos", "C", "Isométrico", "Translúcido", "Ausente", "Incolor", "Não-metálico(adamantino)", "Cores variadas. Faces podem ser curvas"}, //mohs
                                     {"Dolomita", "3.5-4", "3.00", "Carbonato", "CaMg(CO3)2", "Romoédrico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico", "Incolor, branco, roseo. Brilho macarado"}, 
                                     {"Epídoto", "6-7", "3.40", "Sorossilicatos", "...", "Monoclínico", "Translúcido", "Perfeita[2]", "Incolor", "Não-metálico(nacarado,resínoso,vítreo)", "Verde-amarelado a verde-escuro. Base lozangular. Cristais prismáticos estriados paralelamente ao comprimento"}, 
                                     {"Esfalerita", "3.5-4", "4.00", "Sulfeto", "ZnS", "Isométrico", "Opáco", "Perfeita[6]", "Preto", "Não-metálico", "Preto a castanho escuro, raramente vermelho."}, 
@@ -38,10 +38,10 @@ public class Controller : MonoBehaviour
                                     {"Ilmenita", "5-6", "4.50", "Óxido", "FeTiO3", "Romboédrico", "Opáco", "Ausente", "Preto", "Metálico", "Castanho escuro, preto. Levemente magnético. Mineral minério de titaneo"},
                                     {"K-feldspato", "6", "2.57", "Tectossilicatos", "K(AlSi3o10)", "Monoclínico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico(marcado,vítreo)", "Rosa(Salmão). Cristais normalmente tabulares"}, //mohs
                                     {"Magnetita", "5.5-6.5", "5.17", "Óxido", "Fe3O4", "Isométrico", "Opáco", "Ausente", "Preto", "Metálico", "Preto. Fotermente magnético"}, 
-                                    {"Molibdenita", "1-1.5", "4.70", "Sulfeto", "MoS2", "Hexagonal", "Opáco", "Perfeita[1]", "Cinza/Preto/Esverdeado", "Cinza, preto azulado. Tato untoso"},
+                                    {"Molibdenita", "1-1.5", "4.70", "Sulfeto", "MoS2", "Hexagonal", "Opáco", "Perfeita[1]", "Cinza/Preto/Esverdeado", "Opáco", "Cinza, preto azulado. Tato untoso"},
                                     {"Muscovita", "2.5-4", "2.80", "Filossilicatos", "KAl2(AlSi3O10)(OH)2", "Monoclínico", "Translúcido", "Perfeita[1]", "Incolor", "Não-metálico", "Castanho pálido e cores variadas. Cristais tabulares com contornos hexagonal e rômbico"}, 
                                     {"Olivina", "6.5-7", "3.00", "Nesossilicatos", "(Mg,Fe)2 SiO4", "Ortorrômbico", "Translúcido", "Imperfeita[2]", "Incolor", "Não-metálico(resinoso,gorduroso,vítreo)", "Verde-Oliva a verde-acinzentado. Usualmente granulos disseminados em rochas ígneas"},
-                                    {"Ouro", "2.5-3", "19.32", "Elementos Nativos", "Au", "Isométrico", "Opáco", "Ausente", "Amarelo", "Amarelo. Maleável"},
+                                    {"Ouro", "2.5-3", "19.32", "Elementos Nativos", "Au", "Isométrico", "Opáco", "Ausente", "Amarelo", "Metálico", "Amarelo. Maleável"},
                                     {"Pirita", "6-6.5", "5.02", "Sulfeto", "FeS2", "Isométrico", "Opáco", "Ausente", "Preto", "Metálico", "Amarelo latão. Sulfeto mais comum"},
                                     {"Piroxênio", "5-6", "3.20", "Inossilicatos(c. simples)", "...", "Ortorrômbico/Monoclínico", "Transparente/Translúcido", "Perfeita[2]", "Varíavel", "Não-metálico(vítreo)", "Branco, preto, verde. Prismas grossos de secção transversal retãngular. Caracteriazdo pela clivagem"}, 
                                     {"Plagioclásio", "6-6.5", "2.62", "Tectossilicatos", "(Na,Ca)(AlSi4O8)", "Monoclínico", "Translúcido", "Perfeita[3]", "Incolor", "Não-metálico(nacarado,vítreo)", "Branco, incolor, cinzento, azulado"},
@@ -83,6 +83,9 @@ public class Controller : MonoBehaviour
     public int filterGroupSilicate; // 0: todos 1: neso 2: soro 3: ciclo 4: ino 5: filo 6: tecto 
     public int filterGroupNotSilicate; // 0: todos 1: sulfetos 2: sulfatos 3: fosfatos 4: óxidos 5: sulfatos 6: óxidos 4: hidróxidos 5: carbonatos 6: haletos
     
+    public int currentGem;
+    public int idMax;
+    //public int idMin;
     // //lista.length
     // public int[,] numeros = new int[2, 1]{{0}, {0}};
     // public char[,] letras = new char[2, 1]{{'0'}, {'0'}};
@@ -93,6 +96,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         //Console.WriteLine(numeros[0,0]);
+        //Preencher()
     }
 
     // Update is called once per frame
@@ -141,6 +145,7 @@ public class Controller : MonoBehaviour
             {
                 if(gemButtons[i].GetComponent<GemButton>().title == mineralList[j,0])
                 {
+                    gemButtons[i].GetComponent<GemButton>().id = i;
                     gemButtons[i].GetComponent<GemButton>().title = mineralList[j,0];
                     gemButtons[i].GetComponent<GemButton>().hardness = mineralList[j,1];
                     gemButtons[i].GetComponent<GemButton>().density = mineralList[j,2];
@@ -155,6 +160,22 @@ public class Controller : MonoBehaviour
             }
         }
     }
+
+    public void LeftGem() // mudar para o mineral da esquerda
+    {
+        if(currentGem > 0)
+        {
+            gemButtons[currentGem - 1].GetComponent<GemButton>().EnterAbout();
+        }
+    }
+    public void RightGem() // mudar para o mineral da direita
+    {
+        if(currentGem < idMax)
+        {
+            gemButtons[currentGem + 1].GetComponent<GemButton>().EnterAbout();
+        }
+    }
+
 
 
     public void ChangeFilter(int i) // filtros de ordem
@@ -238,6 +259,7 @@ public class Controller : MonoBehaviour
     {
         for(int i=0; i<40; i++)// silicatellist
         {
+            
             if(i < lista.Length)
             {
                 gemButtons[i].SetActive(true);
@@ -246,6 +268,8 @@ public class Controller : MonoBehaviour
                 gemButtons[i].SetActive(false);
                 }  
         }
+
+        idMax = lista.Length - 1;
     }
 
     public void AlphabeticalOrder()// Ordem alfabetica
@@ -258,6 +282,7 @@ public class Controller : MonoBehaviour
                     gemButtons[i].SetActive(true);
                     gemButtons[i].GetComponent<GemButton>().title = mineralList[i,0];
                 }
+                idMax = 39;
             break;
             case 1: //silicatos 
 

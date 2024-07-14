@@ -283,10 +283,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae008bd34364eca42afb100893db5caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   title: 
   hardness: 
   density: 
   classification: 
+  formula: 
+  system: 
+  diaphaneity: 
+  cleavage: 
+  trace: 
+  shine: 
   tmp: {fileID: 2212585150945667217}
   description: {fileID: 1446932771448727077}
 --- !u!1 &2212585150945667219

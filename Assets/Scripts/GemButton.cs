@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GemButton : MonoBehaviour
 {
     Controller control;
+    public int id;
     public string title;
     public string hardness;
     public string density;
@@ -47,8 +48,10 @@ public class GemButton : MonoBehaviour
         }
     }
 
-    public void EnterAbout()
+    public void EnterAbout() //tela de descrição
     {
+        control.currentGem = id;
+
         control.infos[0].text = title;
         control.infos[1].text = hardness;
         control.infos[2].text = density;
@@ -62,5 +65,11 @@ public class GemButton : MonoBehaviour
 
         control.canvas[0].SetActive(false);
         control.canvas[1].SetActive(true);
+    }
+
+    public void RightGem()
+    {
+        //EnterAbout(GemButton gb);
+        //control.gemButtons[currentGem]
     }
 }
