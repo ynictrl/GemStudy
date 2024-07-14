@@ -17,6 +17,7 @@ public class GemButton : MonoBehaviour
     public string cleavage;
     public string trace;
     public string shine;
+    public string other;
     public TMPro.TextMeshProUGUI tmp;
 
     public TMPro.TextMeshProUGUI description;
@@ -62,14 +63,9 @@ public class GemButton : MonoBehaviour
         control.infos[7].text = cleavage;
         control.infos[8].text = trace;
         control.infos[9].text = shine;
+        control.infos[10].text = other;
 
         control.canvas[0].SetActive(false);
         control.canvas[1].SetActive(true);
-    }
-
-    public void RightGem()
-    {
-        //EnterAbout(GemButton gb);
-        //control.gemButtons[currentGem]
     }
 }
